@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EvilInfo</name>
+    </assembly>
+    <members>
+        <member name="T:EvilInfo.Business.HomeController">
+            <summary>
+            Test summary
+            </summary>
+        </member>
+        <member name="M:EvilInfo.Business.HomeController.Login(System.String,System.String,System.String@)">
+            <summary>
+            Used to log in users in to the program
+            </summary>
+            <param name="username">The username</param>
+            <param name="password">The password</param>
+            <param name="userRole">The role of the logged user</param>
+            <returns></returns>
+        </member>
+        <member name="T:EvilInfo.Business.MinionController">
+            <summary>
+            Encapsulate all the logic for <see cref="T:EvilInfo.Services.Models.Users"/> Minions/Users
+            </summary>
+        </member>
+        <member name="M:EvilInfo.Business.MinionController.GetMinionById(System.Int32)">
+            <summary>
+            Gets user info from database
+            </summary>
+            <param name="id">The minion/user id</param>
+            <returns>Object to be displayed from the user <see cref="T:EvilInfo.Presentation.ViewModels.RegistrationViewModel">Test</see> </returns>
+        </member>
+    </members>
+</doc>

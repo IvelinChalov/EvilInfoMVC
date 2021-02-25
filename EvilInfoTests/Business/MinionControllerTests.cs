@@ -1,0 +1,3 @@
+﻿namespace EvilInfo.Business.Tests
+{
+}
