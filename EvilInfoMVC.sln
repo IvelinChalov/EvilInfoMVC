@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo", "EvilInfo\EvilIn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo.Services", "EvilInfo.Services\EvilInfo.Services.csproj", "{A337DDD8-21ED-4CE0-BCFC-468154747937}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilInfo.Presenter", "EvilInfo.Presenter\EvilInfo.Presenter.csproj", "{A0559DE4-A570-447D-A506-F964380A1667}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A337DDD8-21ED-4CE0-BCFC-468154747937}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A337DDD8-21ED-4CE0-BCFC-468154747937}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A337DDD8-21ED-4CE0-BCFC-468154747937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0559DE4-A570-447D-A506-F964380A1667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0559DE4-A570-447D-A506-F964380A1667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0559DE4-A570-447D-A506-F964380A1667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0559DE4-A570-447D-A506-F964380A1667}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
