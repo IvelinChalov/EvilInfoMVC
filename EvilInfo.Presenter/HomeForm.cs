@@ -1,5 +1,4 @@
-﻿using EvilInfo.Services;
-using EvilInfo.Services.DAO;
+﻿using EvilInfo.Services.DAO;
 using EvilInfo.Services.Models;
 using System;
 using System.Security.Cryptography;
@@ -10,15 +9,15 @@ namespace EvilInfo.Presenter
 {
 	public partial class HomeForm : Form
 	{
-		public HomeForm(HomeDAO homeDAO, EvilInfoDBContext evilInfoDBContext)
+		public HomeForm(IHomeDAO homeDAO, RegisterForm registerForm)
 		{
 			InitializeComponent();
 			this.homeDAO = homeDAO;
-			this.evilInfoDBContext = evilInfoDBContext;
+			this.registerForm = registerForm;
 		}
 
-		private EvilInfoDBContext evilInfoDBContext;
-		private HomeDAO homeDAO;
+		private IHomeDAO homeDAO;
+		private RegisterForm registerForm;
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
@@ -26,7 +25,6 @@ namespace EvilInfo.Presenter
 			string password = passwordTextBox.Text;
 
 			Users user = this.homeDAO.LogIn(username, HashPassword(password));
-			//Users user = this.homeDAO.LogIn(username, password);
 
 			string userRole = user.Role.Name;
 			int userId = user.Id;
@@ -70,9 +68,7 @@ namespace EvilInfo.Presenter
 		private void registerButton_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			RegisterForm registerForm = new RegisterForm(homeDAO, new CountryDAO(evilInfoDBContext), new TownDAO(evilInfoDBContext),
-															new RoleDAO(evilInfoDBContext), new VillainDAO(evilInfoDBContext), this);
-			registerForm.Show();
+			this.registerForm.Show();
 		}
 	}
 }

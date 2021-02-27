@@ -10,7 +10,7 @@ namespace EvilInfo.Presenter
 {
 	public partial class RegisterForm : Form
 	{
-		public RegisterForm(HomeDAO homeDAO, CountryDAO countryDAO, TownDAO townDAO, RoleDAO roleDAO, VillainDAO villainDAO, HomeForm homeForm)
+		public RegisterForm(IHomeDAO homeDAO, ICountryDAO countryDAO, ITownDAO townDAO, IRoleDAO roleDAO, IVillainDAO villainDAO, HomeForm homeForm)
 		{
 			this.homeDAO = homeDAO;
 			this.countryDAO = countryDAO;
@@ -23,11 +23,11 @@ namespace EvilInfo.Presenter
 			this.errorLable.Visible = false;
 		}
 
-		private HomeDAO homeDAO;
-		private CountryDAO countryDAO;
-		private TownDAO townDAO;
-		private RoleDAO roleDAO;
-		private VillainDAO villainDAO;
+		private IHomeDAO homeDAO;
+		private ICountryDAO countryDAO;
+		private ITownDAO townDAO;
+		private IRoleDAO roleDAO;
+		private IVillainDAO villainDAO;
 		private HomeForm homeForm;
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)

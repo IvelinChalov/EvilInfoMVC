@@ -1,5 +1,5 @@
-using EvilInfo.Services;
-using EvilInfo.Services.DAO;
+using Autofac;
+using EvilInfo.Presenter.Autofac;
 using System;
 using System.Windows.Forms;
 
@@ -13,14 +13,18 @@ namespace EvilInfo.Presenter
 		[STAThread]
 		static void Main()
 		{
-			EvilInfoDBContext context = new EvilInfoDBContext();
-			HomeDAO homeDAO = new HomeDAO(context);
+			var container = ContainerConfig.Configure();
 
+			using (var scope = container.BeginLifetimeScope())
+			{
+				Application.SetHighDpiMode(HighDpiMode.SystemAware);
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
 
-			Application.SetHighDpiMode(HighDpiMode.SystemAware);
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new HomeForm(homeDAO, context));
+				var homeForm = scope.Resolve<HomeForm>();
+				Application.Run(homeForm);
+
+			}
 		}
 	}
 }

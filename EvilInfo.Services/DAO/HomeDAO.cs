@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace EvilInfo.Services.DAO
 {
-	public class HomeDAO
+	public class HomeDAO : IHomeDAO
 	{
 		//public string GetUserRole(string username, string password)
 		//{
