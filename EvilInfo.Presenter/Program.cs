@@ -1,5 +1,6 @@
 using Autofac;
 using EvilInfo.Presenter.Autofac;
+using EvilInfo.Presenter.Utils;
 using System;
 using System.Windows.Forms;
 
@@ -22,6 +23,7 @@ namespace EvilInfo.Presenter
 				Application.SetCompatibleTextRenderingDefault(false);
 
 				var homeForm = scope.Resolve<HomeForm>();
+				FormFactory._scope = scope;
 				Application.Run(homeForm);
 
 			}

@@ -1,8 +1,7 @@
-﻿using EvilInfo.Services.DAO;
+﻿using EvilInfo.Presenter.Utils;
+using EvilInfo.Services.DAO;
 using EvilInfo.Services.Models;
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -50,13 +49,6 @@ namespace EvilInfo.Presenter
 			throw new Exception("Please select role");
 		}
 
-		private string HashPassword(string password)
-		{
-			var provider = new SHA1CryptoServiceProvider();
-			var encoding = new UnicodeEncoding();
-			return Convert.ToBase64String(provider.ComputeHash(encoding.GetBytes(password)));
-		}
-
 		private void RegisterButton_Click(object sender, EventArgs e)
 		{
 			try
@@ -72,7 +64,7 @@ namespace EvilInfo.Presenter
 
 				Logins logins = new Logins();
 				logins.Username = this.usernameTextBox.Text;
-				logins.Password = this.HashPassword(this.passwordTextBox.Text);
+				logins.Password = PasswordHelper.HashPassword(this.passwordTextBox.Text);
 				logins.Users = users;
 
 				if (this.villainRoleCheckBox.Checked)

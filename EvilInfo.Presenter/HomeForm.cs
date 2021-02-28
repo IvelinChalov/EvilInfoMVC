@@ -1,33 +1,27 @@
-﻿using EvilInfo.Services.DAO;
-using EvilInfo.Services.Models;
+﻿using EvilInfo.Presentation.Business;
+using EvilInfo.Presenter.Utils;
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 
 namespace EvilInfo.Presenter
 {
 	public partial class HomeForm : Form
 	{
-		public HomeForm(IHomeDAO homeDAO, RegisterForm registerForm)
+		public HomeForm(IHomeController homeController)
 		{
 			InitializeComponent();
-			this.homeDAO = homeDAO;
-			this.registerForm = registerForm;
+			this.homeController = homeController;
 		}
 
-		private IHomeDAO homeDAO;
-		private RegisterForm registerForm;
+		private IHomeController homeController;
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
-			string username = usernameTextBox.Text;
-			string password = passwordTextBox.Text;
 
-			Users user = this.homeDAO.LogIn(username, HashPassword(password));
+			string userRole;
+			string hashedPassword = PasswordHelper.HashPassword(this.passwordTextBox.Text);
 
-			string userRole = user.Role.Name;
-			int userId = user.Id;
+			int userId = this.homeController.Login(this.usernameTextBox.Text, hashedPassword, out userRole);
 
 			Redirect(userId, userRole);
 
@@ -39,15 +33,15 @@ namespace EvilInfo.Presenter
 			{
 				case "Minion":
 					{
-
-						MinionMainMenuForm minionMainMenuForm = new MinionMainMenuForm();
+						var minionMainMenuForm = FormFactory.GetFormInstance<MinionMainMenuForm>();
 						minionMainMenuForm.Show();
 					}
 					break;
 				case "Villain":
 					{
-						MinionMainMenuForm mainMenuForm = new MinionMainMenuForm();
-						mainMenuForm.Show();
+						throw new NotImplementedException();
+						//MinionMainMenuForm mainMenuForm = new MinionMainMenuForm();
+						//mainMenuForm.Show();
 					}
 					break;
 				default:
@@ -57,18 +51,12 @@ namespace EvilInfo.Presenter
 			this.Hide();
 		}
 
-		private string HashPassword(string password)
-		{
-			var provider = new SHA1CryptoServiceProvider();
-			var encoding = new UnicodeEncoding();
-			return Convert.ToBase64String(provider.ComputeHash(encoding.GetBytes(password)));
-		}
-
-
 		private void registerButton_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			this.registerForm.Show();
+
+			var registerForm = FormFactory.GetFormInstance<RegisterForm>();
+			registerForm.Show();
 		}
 	}
 }
