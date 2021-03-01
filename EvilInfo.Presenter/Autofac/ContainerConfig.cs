@@ -13,6 +13,7 @@ namespace EvilInfo.Presenter.Autofac
 
 			builder.RegisterType<HomeForm>().SingleInstance();
 			builder.RegisterType<RegisterForm>();
+			builder.RegisterType<MinionMainMenuForm>();
 			builder.RegisterType<HomeDAO>().As<IHomeDAO>();
 			builder.RegisterType<VillainDAO>().As<IVillainDAO>();
 			builder.RegisterType<TownDAO>().As<ITownDAO>();

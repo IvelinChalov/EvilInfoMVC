@@ -10,6 +10,7 @@ namespace EvilInfo.Presenter
 		public HomeForm(IHomeController homeController)
 		{
 			InitializeComponent();
+			this.errorLabel.Visible = false;
 			this.homeController = homeController;
 		}
 
@@ -17,13 +18,21 @@ namespace EvilInfo.Presenter
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
+			try
+			{
+				string userRole;
+				string hashedPassword = PasswordHelper.HashPassword(this.passwordTextBox.Text);
 
-			string userRole;
-			string hashedPassword = PasswordHelper.HashPassword(this.passwordTextBox.Text);
+				int userId = this.homeController.Login(this.usernameTextBox.Text, hashedPassword, out userRole);
 
-			int userId = this.homeController.Login(this.usernameTextBox.Text, hashedPassword, out userRole);
+				Redirect(userId, userRole);
+			}
+			catch (Exception exception)
+			{
 
-			Redirect(userId, userRole);
+				this.errorLabel.Visible = true;
+				this.errorLabel.Text = exception.Message;
+			}
 
 		}
 

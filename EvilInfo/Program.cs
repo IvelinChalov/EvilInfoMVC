@@ -2,7 +2,6 @@
 using EvilInfo.Presentation.Menus;
 using EvilInfo.Services;
 using EvilInfo.Services.DAO;
-
 namespace EvilInfo
 {
 	class Program

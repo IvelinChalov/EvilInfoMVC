@@ -273,6 +273,7 @@ namespace EvilInfo.Presenter
 			this.Controls.Add(this.label1);
 			this.Name = "RegisterForm";
 			this.Text = "RegisterForm";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegisterForm_FormClosed);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

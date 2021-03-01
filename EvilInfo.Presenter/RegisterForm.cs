@@ -1,33 +1,23 @@
-﻿using EvilInfo.Presenter.Utils;
-using EvilInfo.Services.DAO;
-using EvilInfo.Services.Models;
+﻿using EvilInfo.Presentation.Business;
+using EvilInfo.Presentation.Utils;
+using EvilInfo.Presentation.ViewModels;
+using EvilInfo.Presenter.Utils;
 using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace EvilInfo.Presenter
 {
 	public partial class RegisterForm : Form
 	{
-		public RegisterForm(IHomeDAO homeDAO, ICountryDAO countryDAO, ITownDAO townDAO, IRoleDAO roleDAO, IVillainDAO villainDAO, HomeForm homeForm)
+		public RegisterForm(IHomeController homeController)
 		{
-			this.homeDAO = homeDAO;
-			this.countryDAO = countryDAO;
-			this.townDAO = townDAO;
-			this.roleDAO = roleDAO;
-			this.villainDAO = villainDAO;
-			this.homeForm = homeForm;
+			this.homeController = homeController;
 
 			InitializeComponent();
 			this.errorLable.Visible = false;
 		}
 
-		private IHomeDAO homeDAO;
-		private ICountryDAO countryDAO;
-		private ITownDAO townDAO;
-		private IRoleDAO roleDAO;
-		private IVillainDAO villainDAO;
-		private HomeForm homeForm;
+		private IHomeController homeController;
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
@@ -53,36 +43,29 @@ namespace EvilInfo.Presenter
 		{
 			try
 			{
-				if (!IsSame(this.passwordTextBox.Text, this.repeatPasswordTextBox.Text)) throw new Exception("Password mismatch");
 
-				Users users = new Users();
-				users.FirstName = this.firstNameTextBox.Text;
-				users.LastName = this.lastNameTextBox.Text;
-				users.Country = this.countryDAO.GetCoutry(this.countryNameTextBox.Text);
-				users.Town = this.townDAO.GetTown(this.townNameTextBox.Text);
-				users.Role = this.roleDAO.GetRole(GetSelectedRole());
+				if (!PasswordHelper.IsSame(this.passwordTextBox.Text, this.repeatPasswordTextBox.Text)) throw new Exception("Password mismatch");
 
-				Logins logins = new Logins();
-				logins.Username = this.usernameTextBox.Text;
-				logins.Password = PasswordHelper.HashPassword(this.passwordTextBox.Text);
-				logins.Users = users;
+				RegistrationViewModel registrationViewModel = new RegistrationViewModel();
+
+				registrationViewModel.FirstName = this.firstNameTextBox.Text;
+				registrationViewModel.LastName = this.lastNameTextBox.Text;
+				registrationViewModel.CountryName = this.countryNameTextBox.Text;
+				registrationViewModel.TownName = this.townNameTextBox.Text;
+				registrationViewModel.RoleName = GetSelectedRole();
+
+				registrationViewModel.Username = this.usernameTextBox.Text;
+				registrationViewModel.Password = PasswordHelper.HashPassword(this.passwordTextBox.Text);
 
 				if (this.villainRoleCheckBox.Checked)
 				{
-					VillainUsers villainUsers = new VillainUsers();
-					EvilnessFactors evilnessFactor = this.villainDAO.GetEvilnessFactor(this.evilnessFactorTextBox.Text);
-					villainUsers.EvilnessFactor = evilnessFactor;
-					villainUsers.User = users;
-
-					this.homeDAO.RegisterVillain(villainUsers, logins);
-				}
-				else
-				{
-					this.homeDAO.RegisterUser(logins);
+					registrationViewModel.EvilnessFactor = this.evilnessFactorTextBox.Text;
 				}
 
+				this.homeController.Register(registrationViewModel);
 				this.Close();
-				this.homeForm.Show();
+				var homeForm = FormFactory.GetFormInstance<HomeForm>();
+				homeForm.Show();
 			}
 			catch (Exception error)
 			{
@@ -94,15 +77,9 @@ namespace EvilInfo.Presenter
 
 		}
 
-		private bool IsSame(string first, string second)
-		{
-			return string.Equals(first, second);
-		}
-
 		private void firstNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			var regex = new Regex(@"[^a-zA-Z\s]");
-			if (regex.IsMatch(e.KeyChar.ToString()))
+			if (ValidatorHelper.IsStrigValid(e.KeyChar.ToString()))
 			{
 				e.Handled = true;
 			}
@@ -111,7 +88,13 @@ namespace EvilInfo.Presenter
 		private void cancelButton_Click(object sender, EventArgs e)
 		{
 			this.Close();
-			this.homeForm.Show();
+		}
+
+		private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+
+			var homeForm = FormFactory.GetFormInstance<HomeForm>();
+			homeForm.Show();
 		}
 	}
 }

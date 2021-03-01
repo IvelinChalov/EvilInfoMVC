@@ -35,6 +35,7 @@ namespace EvilInfo.Presenter
 			this.passwordLabel = new System.Windows.Forms.Label();
 			this.registerButton = new System.Windows.Forms.Button();
 			this.loginButton = new System.Windows.Forms.Button();
+			this.errorLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// usernameTextBox
@@ -89,11 +90,22 @@ namespace EvilInfo.Presenter
 			this.loginButton.UseVisualStyleBackColor = true;
 			this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
 			// 
+			// errorLabel
+			// 
+			this.errorLabel.AutoSize = true;
+			this.errorLabel.ForeColor = System.Drawing.Color.Red;
+			this.errorLabel.Location = new System.Drawing.Point(169, 234);
+			this.errorLabel.Name = "errorLabel";
+			this.errorLabel.Size = new System.Drawing.Size(0, 15);
+			this.errorLabel.TabIndex = 6;
+			this.errorLabel.Visible = false;
+			// 
 			// HomeForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(446, 269);
+			this.Controls.Add(this.errorLabel);
 			this.Controls.Add(this.loginButton);
 			this.Controls.Add(this.registerButton);
 			this.Controls.Add(this.passwordLabel);
@@ -115,6 +127,7 @@ namespace EvilInfo.Presenter
 		private System.Windows.Forms.Label passwordLabel;
 		private System.Windows.Forms.Button registerButton;
 		private System.Windows.Forms.Button loginButton;
+		private System.Windows.Forms.Label errorLabel;
 	}
 }
 

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using EvilInfo.Presenter.Utils;
+using System;
 using System.Windows.Forms;
 
 namespace EvilInfo.Presenter
@@ -13,6 +9,17 @@ namespace EvilInfo.Presenter
 		public MinionMainMenuForm()
 		{
 			InitializeComponent();
+		}
+
+		private void MinionMainMenuForm_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void MinionMainMenuForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			var homeForm = FormFactory.GetFormInstance<HomeForm>();
+			homeForm.Show();
 		}
 	}
 }
