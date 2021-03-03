@@ -1,5 +1,6 @@
 ﻿using Autofac;
-using EvilInfo.Presentation.Business;
+using EvilInfo.Business.Controllers;
+using EvilInfo.Business.Interfaces;
 using EvilInfo.Services;
 using EvilInfo.Services.DAO;
 

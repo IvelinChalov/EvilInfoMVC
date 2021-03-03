@@ -1,10 +1,14 @@
-﻿using EvilInfo.Presentation.CustomExceptions;
-using EvilInfo.Presentation.ViewModels;
+﻿using EvilInfo.Business.CustomExceptions;
+using EvilInfo.Business.Interfaces;
+using EvilInfo.Models.ViewModels;
 using EvilInfo.Services.DAO;
 using EvilInfo.Services.Models;
 
-namespace EvilInfo.Presentation.Business
+namespace EvilInfo.Business.Controllers
 {
+	/// <summary>
+	/// Test summary
+	/// </summary>
 	public class HomeController : IHomeController
 	{
 		/// <summary>
@@ -52,6 +56,7 @@ namespace EvilInfo.Presentation.Business
 				this.homeDAO.RegisterUser(loginInfo);
 			}
 		}
+
 
 		private IHomeDAO homeDAO = null;
 		private IVillainDAO villainDAO = null;

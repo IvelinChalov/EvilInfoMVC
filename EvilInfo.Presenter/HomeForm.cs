@@ -1,4 +1,4 @@
-﻿using EvilInfo.Presentation.Business;
+﻿using EvilInfo.Business.Interfaces;
 using EvilInfo.Presenter.Utils;
 using System;
 using System.Windows.Forms;

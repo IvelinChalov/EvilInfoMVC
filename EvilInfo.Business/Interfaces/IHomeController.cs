@@ -1,6 +1,6 @@
-﻿using EvilInfo.Presentation.ViewModels;
+﻿using EvilInfo.Models.ViewModels;
 
-namespace EvilInfo.Presentation.Business
+namespace EvilInfo.Business.Interfaces
 {
 	public interface IHomeController
 	{

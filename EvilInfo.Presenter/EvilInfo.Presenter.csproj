@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Bisiness\**" />
+    <Compile Remove="ViewModels\**" />
+    <EmbeddedResource Remove="Bisiness\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <None Remove="Bisiness\**" />
+    <None Remove="ViewModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="6.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
       <PrivateAssets>all</PrivateAssets>
@@ -16,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EvilInfo.Services\EvilInfo.Services.csproj" />
+    <ProjectReference Include="..\EvilInfo.Business\EvilInfo.Business.csproj" />
+    <ProjectReference Include="..\EvilInfo.Models\EvilInfo.Models.csproj" />
   </ItemGroup>
 
 </Project>

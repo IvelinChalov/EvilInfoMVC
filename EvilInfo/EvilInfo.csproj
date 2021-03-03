@@ -10,6 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Business\**" />
+    <Compile Remove="CustomExceptions\**" />
+    <Compile Remove="Presentation\ViewModels\**" />
+    <EmbeddedResource Remove="Business\**" />
+    <EmbeddedResource Remove="CustomExceptions\**" />
+    <EmbeddedResource Remove="Presentation\ViewModels\**" />
+    <None Remove="Business\**" />
+    <None Remove="CustomExceptions\**" />
+    <None Remove="Presentation\ViewModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,7 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EvilInfo.Services\EvilInfo.Services.csproj" />
+    <ProjectReference Include="..\EvilInfo.Business\EvilInfo.Business.csproj" />
+    <ProjectReference Include="..\EvilInfo.Models\EvilInfo.Models.csproj" />
   </ItemGroup>
 
 </Project>

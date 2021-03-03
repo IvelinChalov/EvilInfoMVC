@@ -1,6 +1,6 @@
-﻿using EvilInfo.Presentation.Business;
+﻿using EvilInfo.Business.Interfaces;
+using EvilInfo.Models.ViewModels;
 using EvilInfo.Presentation.Utils;
-using EvilInfo.Presentation.ViewModels;
 using EvilInfo.Presenter.Utils;
 using System;
 using System.Windows.Forms;

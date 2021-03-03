@@ -1,7 +1,7 @@
-﻿using EvilInfo.Business;
-using EvilInfo.CustomExceptions;
+﻿using EvilInfo.Business.Controllers;
+using EvilInfo.Business.CustomExceptions;
+using EvilInfo.Models.ViewModels;
 using EvilInfo.Presentation.Utils;
-using EvilInfo.Presentation.ViewModels;
 using System;
 using System.Security.Cryptography;
 using System.Text;
