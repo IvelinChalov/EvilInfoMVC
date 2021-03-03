@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo", "EvilInfo\EvilInfo.csproj", "{21A8E199-F175-4A79-922C-B1791C02959C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo.Console.Presenter", "EvilInfo\EvilInfo.Console.Presenter.csproj", "{21A8E199-F175-4A79-922C-B1791C02959C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo.Services", "EvilInfo.Services\EvilInfo.Services.csproj", "{A337DDD8-21ED-4CE0-BCFC-468154747937}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo.Presenter", "EvilInfo.Presenter\EvilInfo.Presenter.csproj", "{A0559DE4-A570-447D-A506-F964380A1667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo.From.Presenter", "EvilInfo.Presenter\EvilInfo.From.Presenter.csproj", "{A0559DE4-A570-447D-A506-F964380A1667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilInfo.Business", "EvilInfo.Business\EvilInfo.Business.csproj", "{D6374A9A-B134-4B82-8860-8E62A6BEB185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo.Business", "EvilInfo.Business\EvilInfo.Business.csproj", "{D6374A9A-B134-4B82-8860-8E62A6BEB185}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilInfo.Models", "EvilInfo.Models\EvilInfo.Models.csproj", "{6DF46C3E-8AF4-4EE5-8753-49132373CA86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilInfo.Models", "EvilInfo.Models\EvilInfo.Models.csproj", "{6DF46C3E-8AF4-4EE5-8753-49132373CA86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
