@@ -42,6 +42,7 @@ namespace EvilInfo.Services.DAO
 		//}
 
 
+		//Да сложа ?.Users; са за да се покаже ползата от тестовете
 		public Users LogIn(string username, string password)
 		{
 			var user = this.context.Logins
