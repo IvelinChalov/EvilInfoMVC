@@ -2,7 +2,7 @@
 
 namespace EvilInfo.Presentation.CustomExceptions
 {
-	class IncorectCredentialsException : Exception
+	public class IncorectCredentialsException : Exception
 	{
 		public IncorectCredentialsException(string message)
 			: base(message)
