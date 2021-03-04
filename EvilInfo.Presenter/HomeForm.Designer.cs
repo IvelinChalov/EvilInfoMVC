@@ -31,10 +31,11 @@ namespace EvilInfo.Presenter
 		{
 			this.usernameTextBox = new System.Windows.Forms.TextBox();
 			this.passwordTextBox = new System.Windows.Forms.TextBox();
-			this.usernaLabel = new System.Windows.Forms.Label();
+			this.usernameLabel = new System.Windows.Forms.Label();
 			this.passwordLabel = new System.Windows.Forms.Label();
 			this.registerButton = new System.Windows.Forms.Button();
 			this.loginButton = new System.Windows.Forms.Button();
+			this.errorLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// usernameTextBox
@@ -51,14 +52,14 @@ namespace EvilInfo.Presenter
 			this.passwordTextBox.Size = new System.Drawing.Size(100, 23);
 			this.passwordTextBox.TabIndex = 1;
 			// 
-			// usernaLabel
+			// usernameLabel
 			// 
-			this.usernaLabel.AutoSize = true;
-			this.usernaLabel.Location = new System.Drawing.Point(124, 121);
-			this.usernaLabel.Name = "usernaLabel";
-			this.usernaLabel.Size = new System.Drawing.Size(63, 15);
-			this.usernaLabel.TabIndex = 2;
-			this.usernaLabel.Text = "Username:";
+			this.usernameLabel.AutoSize = true;
+			this.usernameLabel.Location = new System.Drawing.Point(124, 121);
+			this.usernameLabel.Name = "usernameLabel";
+			this.usernameLabel.Size = new System.Drawing.Size(63, 15);
+			this.usernameLabel.TabIndex = 2;
+			this.usernameLabel.Text = "Username:";
 			// 
 			// passwordLabel
 			// 
@@ -89,15 +90,26 @@ namespace EvilInfo.Presenter
 			this.loginButton.UseVisualStyleBackColor = true;
 			this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
 			// 
+			// errorLabel
+			// 
+			this.errorLabel.AutoSize = true;
+			this.errorLabel.ForeColor = System.Drawing.Color.Red;
+			this.errorLabel.Location = new System.Drawing.Point(202, 85);
+			this.errorLabel.Name = "errorLabel";
+			this.errorLabel.Size = new System.Drawing.Size(0, 15);
+			this.errorLabel.TabIndex = 6;
+			this.errorLabel.Visible = false;
+			// 
 			// HomeForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(446, 269);
+			this.Controls.Add(this.errorLabel);
 			this.Controls.Add(this.loginButton);
 			this.Controls.Add(this.registerButton);
 			this.Controls.Add(this.passwordLabel);
-			this.Controls.Add(this.usernaLabel);
+			this.Controls.Add(this.usernameLabel);
 			this.Controls.Add(this.passwordTextBox);
 			this.Controls.Add(this.usernameTextBox);
 			this.Name = "HomeForm";
@@ -111,10 +123,11 @@ namespace EvilInfo.Presenter
 
 		private System.Windows.Forms.TextBox usernameTextBox;
 		private System.Windows.Forms.TextBox passwordTextBox;
-		private System.Windows.Forms.Label usernaLabel;
+		private System.Windows.Forms.Label usernameLabel;
 		private System.Windows.Forms.Label passwordLabel;
 		private System.Windows.Forms.Button registerButton;
 		private System.Windows.Forms.Button loginButton;
+		private System.Windows.Forms.Label errorLabel;
 	}
 }
 

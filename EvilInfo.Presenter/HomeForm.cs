@@ -14,6 +14,7 @@ namespace EvilInfo.Presenter
 		{
 			InitializeComponent();
 			this.homeDAO = homeDAO;
+			this.errorLabel.Visible = false;
 			this.evilInfoDBContext = evilInfoDBContext;
 		}
 
@@ -22,16 +23,25 @@ namespace EvilInfo.Presenter
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
-			string username = usernameTextBox.Text;
-			string password = passwordTextBox.Text;
+			try
+			{
+				string username = this.usernameTextBox.Text;
+				string password = this.passwordTextBox.Text;
 
-			Users user = this.homeDAO.LogIn(username, HashPassword(password));
-			//Users user = this.homeDAO.LogIn(username, password);
+				Users user = this.homeDAO.LogIn(username, HashPassword(password));
+				if (user == null) throw new ArgumentException("Username and password does not match");
+				//Users user = this.homeDAO.LogIn(username, password);
 
-			string userRole = user.Role.Name;
-			int userId = user.Id;
+				string userRole = user.Role.Name;
+				int userId = user.Id;
 
-			Redirect(userId, userRole);
+				Redirect(userId, userRole);
+			}
+			catch (Exception error)
+			{
+				this.errorLabel.Visible = true;
+				this.errorLabel.Text = error.Message;
+			}
 
 		}
 
