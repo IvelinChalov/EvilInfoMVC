@@ -2,10 +2,8 @@
 using EvilInfo.Presentation.Menus;
 using EvilInfo.Services;
 using EvilInfo.Services.DAO;
-
 namespace EvilInfo
 {
-	[System.Runtime.InteropServices.Guid("E4F7C2AA-0660-4562-8E07-C67F8E08DD6F")]
 	class Program
 	{
 		static void Main(string[] args)
