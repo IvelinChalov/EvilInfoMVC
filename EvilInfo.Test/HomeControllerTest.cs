@@ -58,7 +58,7 @@ namespace EvilInfo.Test
 			string userRole = string.Empty;
 
 			var exception = Assert.Throws<IncorectCredentialsException>(() => homeController.Login(username, password, out userRole));
-			//Assert.AreEqual("Cannot read temperature before initializing.", exception.Message);
+			//Assert.AreEqual("Incorect credentials", exception.Message);
 			// or:
 			Assert.That(exception.Message, Is.EqualTo("Incorect credentials"));
 		}
