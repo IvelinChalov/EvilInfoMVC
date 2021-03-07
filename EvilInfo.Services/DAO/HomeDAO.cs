@@ -49,9 +49,12 @@ namespace EvilInfo.Services.DAO
 				.Include(l => l.Users)
 				.ThenInclude(u => u.Role)
 				.Where(u => u.Username.Equals(username) && u.Password.Equals(password))
-				.FirstOrDefault().Users;
+				.FirstOrDefault()?.Users;
 
 			return user;
+			//if (user != null) return user.Users;
+
+			//return null;
 		}
 
 		public void RegisterUser(Logins loginInfo)
